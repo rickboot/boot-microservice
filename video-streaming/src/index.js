@@ -3,7 +3,6 @@ const fs = require('fs');
 
 const app = express();
 
-// const PORT = 3000;
 if (!process.env.PORT) {
   throw new Error('PORT environment variable not found');
 }
