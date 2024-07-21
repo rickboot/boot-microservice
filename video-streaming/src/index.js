@@ -1,6 +1,12 @@
 const express = require('express');
 const http = require('http');
 
+if (!process.env.PORT) {
+  throw new Error(
+    'Specify port number for HTTP server with environment variable.'
+  );
+}
+
 const PORT = process.env.PORT;
 const VIDEO_STORAGE_HOST = process.env.VIDEO_STORAGE_HOST;
 const VIDEO_STORAGE_PORT = process.env.VIDEO_STORAGE_PORT;
@@ -24,4 +30,4 @@ app.get('/', async (req, res) => {
   req.pipe(forwardRequest);
 });
 
-app.listen(PORT, console.log('Listening on port ', PORT));
+app.listen(PORT, console.log('video-streaming listening on port ', PORT));
